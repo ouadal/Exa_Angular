@@ -162,11 +162,11 @@ export class MoyenneComponentComponent implements OnInit {
          },
          (error: any) => {
            console.log(error.message)
+         } ,(error: any) => {
+           console.log(error.message)
          }
 
        );
-
-
   }
 
 
