@@ -1,0 +1,162 @@
+/*form {*/
+/*  background-color: #FFFFFF;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  flex-direction: column;*/
+/*  padding: 0 50px;*/
+/*  height: 100%;*/
+/*  text-align: center;*/
+/*}*/
+
+/*input {*/
+/*  background-color: #eee;*/
+/* border-radius: inherit;*/
+/*  padding: 12px 15px;*/
+/*  margin: 8px 0;*/
+/*  width: 100%;*/
+/*  outline: none;*/
+/*}*/
+
+/*span{*/
+/*  background-color: #FFFFFF;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  flex-direction: column;*/
+/*  padding: 0 50px;*/
+/*  height: 100%;*/
+/*  text-align: center;*/
+
+/*}*/
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registration-form {
+  width: 400px;
+  padding: 30px;
+  background-color: #1CB5E0;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.form-icon {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.form-icon i {
+  color: #007bff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.select-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #fdf59a;
+}
+
+.select-group span {
+  flex: 1;
+}
+
+.form-select {
+  flex: 3;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn.create-account {
+  background-color: #007bff;
+}
+
+.btn.create-account:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn.create-account:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+
+ .landscape-mode {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transform: rotate(90deg);
+   transform-origin: left top;
+   overflow: auto;
+   writing-mode: tb-rl; /* Cette propriété peut aider à l'affichage en mode paysage sur certains navigateurs */
+ }
+
+.btn.create-account {
+  /* ... Vos styles actuels ... */
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn.create-account:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+
+
+
+.form-group {
+  position: relative;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px #007bff;
+}

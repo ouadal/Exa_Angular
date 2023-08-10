@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+.form-control item{
+  border-radius: 10px;
+}
+#signUp a {
+  color: white;
+  text-decoration: none; /* Remove the underline on the link */
+  padding: 10px 20px; /* Add padding to increase the clickable area */
+  border-radius: 4px; /* Add rounded corners to the button */
+  transition: background-color 0.3s ease; /* Add a smooth transition on hover */
+}
+
+/* Add a hover effect */
+
+/*#username label{*/
+/*  position: absolute;*/
+/*  top: 50%;*/
+/*  */
+
+/*}*/
+/*img{*/
+/*  width:400px;*/
+/*  height:400px;*/
+/*  background-size: cover;*/
+/*  object-position: c;*/
+/*}*/
+

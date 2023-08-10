@@ -1,0 +1,28 @@
+.custom-sidebar {
+  background-color: #f0f0f0; /* Remplacez "your-color" par la couleur souhaitée (par exemple, #f0f0f0) */
+}
+/*.header-danger-color{*/
+/*  background-color: slategrey;*/
+/*}*/
+.custom-sidebar {
+  background-color: #f0f0f0; /* Remplacez "your-color" par la couleur souhaitée (par exemple, #f0f0f0) */
+}
+/*.header-danger-color{*/
+/*  background-color: slategrey;*/
+/*}*/
+.custom-button-color {
+  background-color:#2C5364; /* Replace with your desired color code */
+  color: #ffffff;
+  border: none/* Replace this with the actual background color of your page */
+  /* Add any other styling you need for the dropdown button */
+}
+
+/* Custom CSS to make the dropdown menu background match the page background color */
+.dropdown-menu {
+  background-color:#2c3e50; /* Replace this with the actual background color of your page */
+  /* Add any other styling you need for the dropdown menu */
+}
+.underline {
+  text-decoration: underline;
+  text-decoration-color: #999; /* Couleur du soulignement */
+}
