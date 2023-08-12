@@ -76,5 +76,8 @@ export class MoyenneService {
     )
   }
 
+  getMoyenneAll(number: number, number2: number) {
+    return this.http.get(`${environment.backendHost}/Moyenne/getAllMoyDavibil/${number}/${number2}`)
+  }
 }
 

@@ -129,14 +129,14 @@ export class EnrolementComponentComponent implements OnInit {
 
   addEnrol() {
     var data = {
-      examen: this.examen.value,
-      ecole: this.ecole.value,
+      examen: {id:this.examenSelect.value},
+      ecole: {id:this.ecoleSelect.value},
     }
     console.log(data)
     this.enrolementService.addEnrol(data).subscribe({
       next: (value: any) => {
         console.log('Enrolement ajoutée avec succès !')
-        this.getAllEnrol
+        this.ngOnInit()
         this.enrolementForm.reset()
 
       },

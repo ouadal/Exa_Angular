@@ -17,6 +17,10 @@ import {NoteService} from "../../services/note.service";
 })
 export class MoyenneComponentComponent implements OnInit {
 
+
+  see: boolean=false;
+  examenID: number = 0;
+  sessionID: number = 0;
   moyenneTotale = new FormControl('')
   inscription = new FormControl('')
   examen = new FormControl('')
@@ -83,8 +87,13 @@ export class MoyenneComponentComponent implements OnInit {
   }
 
 
+  verifiy(){
+    this.see = true;
+    this.genererMoy();
+  }
 
   reloadDataMat(){
+
     this.authenticationService.getMyInformations().subscribe({
       next:(value:any)=>{
         let isAdmin = false
@@ -103,11 +112,15 @@ export class MoyenneComponentComponent implements OnInit {
           let idEcole =value.data[0].informations.id;
           this.genererMoy()
         }
+        this.toastr.success("Calcule éffectué avec succes", "Succès")
+        this.see = false;
       },
       error:(err)=>{
         this.toastr.error(err.message)
+        this.see = false;
       }
     })
+
   }
 
 
@@ -154,14 +167,18 @@ export class MoyenneComponentComponent implements OnInit {
   }
 
   genererMoy(){
-    return this.moyenneService.genererMoy(this.examenSelect.value!,this.sessionSelect.value!).subscribe(
+    return this.moyenneService.genererMoy(this.examenID,this.sessionID).subscribe(
          (value: any) => {
            this.moyennes = value;
-           this.getMoyForAllEcolRang()
-           console.log(this.moyennes)
+           this.getAllMoyenne();
+           //this.getMoyForAllEcolRang()
+           this.toastr.success("Calcule éffectué avec succes...", "Succès")
+           this.see = false;
+
          },
          (error: any) => {
            console.log(error.message)
+           this.see = false;
          }
 
        );
@@ -270,13 +287,6 @@ export class MoyenneComponentComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
   getAllMoy() {
     return this.moyenneService.getAllMoy().subscribe(
       (value: any) => {
@@ -306,6 +316,14 @@ export class MoyenneComponentComponent implements OnInit {
 
   setActiveMoy(moyenne : any) {
     this.activeMoy={...moyenne}
+  }
+
+   getAllMoyenne() {
+    this.moyenneService.getMoyenneAll(this.examenID,this.sessionID).subscribe({
+      next:data =>{
+        this.moyennes = data;
+      }
+    })
   }
 }
 

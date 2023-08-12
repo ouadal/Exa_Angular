@@ -57,6 +57,7 @@ export class NoteComponentComponent implements OnInit {
 
 
   });
+  private result: any;
   constructor(private fb : FormBuilder,private inscriptionService : InscriptionService,private sessionService:SessionService,private enrolementService: EnrolementService,private toastr:ToastrService,private matiereService:MatiereService,private attMatService: AttributionMatiereService,private noteService : NoteService,private authenticationService:AuthenticationService,private examenService : ExamenService) {
 
   }
@@ -628,8 +629,14 @@ export class NoteComponentComponent implements OnInit {
         if(this.sessionSelect.value){
           return this.noteService.genereNotePerExam(this.examenSelect.value, this.sessionSelect.value).subscribe(
             (value: any) => {
-              this.notes = value;
-              console.log(this.notes)
+              this.result = value;
+              if (this.result == false){
+                this.toastr.warning("Note déja générer .................", "Alert")
+
+              }else {
+                this.toastr.success("Note généree avec succes", "Succès")
+              }
+
             },
             (error: any) => {
               console.log(error.message)

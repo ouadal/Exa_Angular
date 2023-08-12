@@ -14,7 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -32,6 +32,7 @@ import { AppInterceptor } from './interceptors/app.interceptor';
 import { AuthenticationModule } from './authentication/authentication.module';
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { OpRegistrationComponent } from './Components/op-registration/op-registration.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatiereComponentComponent,
     MoyenneComponentComponent,
     NoteComponentComponent,
+    OpRegistrationComponent,
 
 
 
@@ -78,6 +80,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     }),
     MatSelectModule,
     MatDatepickerModule,
+    FormsModule,
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AppInterceptor,multi:true}

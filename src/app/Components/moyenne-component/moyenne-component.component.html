@@ -13,9 +13,19 @@
     </div>
   </nav>
 
+  <div class="d-flex justify-content-end">
 
+  <button  *ngIf="see==false" (click)="verifiy()"   class="btn btn-info  btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down-fill mr-1" viewBox="1 1 16 16">
+    <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
+  </svg>
+Génerer MOyennes
 
+  </button>
 
+    <marquee *ngIf="see==true" direction="right" scrollamount="10" class="text-danger">
+      <strong>.......Traitement de calcul des moyennes encours.......</strong>
+    </marquee>
+  </div>
 
   <div class="card-header border-2 d-flex justify-content-lg-between">
 
@@ -25,55 +35,59 @@
 <!--      Liste des Moyennes-->
 <!--    </button>-->
 
+    <div style="display: flex;justify-content: space-between;width: 100%;">
+      <div style="display: flex; align-items: center;width: 50%;">
+        <span style="font-weight: bold;font-size: medium">Examen</span>
+        <select  style="width: 100%" class="form-select ml-1 custom-select mb-2"  [(ngModel)]="examenID"  aria-label=" form-select-lg ">
+          <option *ngFor="let ex of examens" [value]="ex.id">{{ex.libele}}</option>
+        </select>
+      </div>
 
-    <select style="width: 100%" class="form-select " [formControl]="examen"  aria-label=" form-select-lg ">
-      <option *ngFor="let ex of examens" [value]="ex.id">{{ex.libele}}</option>
-    </select>
+
+      <div style="display: flex; align-items: center;width: 50%;">
+        <span style="font-weight: bold;font-size: medium">Session</span>
+        <select (ngModelChange)="genererMoy()"  style="width: 100%"  class="form-select ml-1 custom-select mb-2" [(ngModel)]="sessionID"  aria-label=" form-select-lg ">
+          <option *ngFor="let se of sessions" [value]="se.id">{{se.libele}}</option>
+        </select>
+      </div>
+    </div>
 
 
-    <select style="width: 100%" class="form-select " [formControl]="session"  aria-label=" form-select-lg ">
-      <option *ngFor="let se of sessions" [value]="se.id">{{se.libele}}</option>
-    </select>
-
-    <button  (click)="reloadDataMat()"   class="btn btn-info  btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down-fill mr-1" viewBox="1 1 16 16">
-      <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
-    </svg>
-
-    </button>
 
 
     <!-- Bouton "Ajouter" -->
-    <button class="btn btn-primary btn-sm"   data-bs-toggle="tooltip" data-bs-placement="top" title="Ajouter" data-toggle="modal" data-target="#cycleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-1"  viewBox="1 1 16 16">
-      <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-    </svg></button>
+<!--    <button class="btn btn-primary btn-sm"   data-bs-toggle="tooltip" data-bs-placement="top" title="Ajouter" data-toggle="modal" data-target="#cycleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-1"  viewBox="1 1 16 16">-->
+<!--      <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>-->
+<!--    </svg></button>-->
 
-    <!-- Modal -->
-    <div class="modal fade" id="cycleModal" tabindex="-1" role="dialog" aria-labelledby="cycleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <form class="container">
-            <div class="modal-header">
-              <h5 class="modal-title" id="cycleModalLabel">Moyenne Form</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">x</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input class="form-control form-control-sm mb-4" [formControl]="moyenneTotale" type="text" placeholder="moyenne total" required>
+<!--    &lt;!&ndash; Modal &ndash;&gt;-->
+<!--    <div class="modal fade" id="cycleModal" tabindex="-1" role="dialog" aria-labelledby="cycleModalLabel" aria-hidden="true">-->
+<!--      <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--          <form class="container">-->
+<!--            <div class="modal-header">-->
+<!--              <h5 class="modal-title" id="cycleModalLabel">Moyenne Form</h5>-->
+<!--              <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                <span aria-hidden="true">x</span>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--              <input class="form-control form-control-sm mb-4" [formControl]="moyenneTotale" type="text" placeholder="moyenne total" required>-->
 
-              <select style="width: 100%" class="form-select " [formControl]="inscription"  aria-label=" form-select-lg ">
-                <option *ngFor="let in of inscriptions" [value]="in.id">{{in.eleve.nom}}</option>
-              </select>
+<!--              <select style="width: 100%" class="form-select " [formControl]="inscription"  aria-label=" form-select-lg ">-->
+<!--                <option *ngFor="let in of inscriptions" [value]="in.id">{{in.eleve.nom}}</option>-->
+<!--              </select>-->
 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Annuler</button>
-              <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" [disabled]="!moyenneTotale.valid && !inscription.valid && !examen.valid && !session.valid" (click)="addMoy()">Ajouter</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Annuler</button>-->
+<!--              <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" [disabled]="!moyenneTotale.valid && !inscription.valid && !examen.valid && !session.valid" (click)="addMoy()">Ajouter</button>-->
+<!--            </div>-->
+
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
   </div>
 
@@ -99,40 +113,27 @@
       <thead class="thead-light" >
       <tr>
 
-        <th scope="col">Examen</th>
-        <th scope="col">Session</th>
-        <th scope="col">Moyenne</th>
-        <th scope="col">Actions</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col" class="text-center">Moyenne</th>
+        <th scope="col">Rang G</th>
+
+        <th scope="col">Ecole</th>
+        <th scope="col">Rang E</th>
 
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let moyenne of moyennes" class="">
-        <td>{{moyenne.examen.libele}}</td>
-        <td>{{moyenne.session.libele}}</td>
-        <td>{{moyenne.moyenneTotale}}</td>
+        <td>{{moyenne.inscription.eleve.nom}}</td>
+        <td>{{moyenne.inscription.eleve.prenom}}</td>
+        <td class="text-success text-center">{{moyenne.moyenneTotale}}</td>
+        <td class="text-warning text-center"> <b> {{moyenne.rangGenerale}}</b></td>
 
+        <td>{{moyenne.inscription.ecole.nomEcole}}</td>
+        <td class="text-danger text-center">{{moyenne.rangEcole}}</td>
+        <td></td>
 
-        <button  (click)="editMoy(moyenne.id) " class="btn btn-primary btn-sm m-1"  data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier" data-toggle="modal" data-target="#cycleModalEdit" >
-
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-          </svg>
-
-          </button>
-
-
-
-
-
-
-
-        <button (click)="setActiveMoy(moyenne)" class="btn btn-sm btn-danger mr-1 m-1"   data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer" data-toggle="modal" data-target="#confirmDeleteModal">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-          </svg>
-
-        </button>
         <div class="modal" id="confirmDeleteModal" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
