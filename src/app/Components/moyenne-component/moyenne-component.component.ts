@@ -21,6 +21,7 @@ export class MoyenneComponentComponent implements OnInit {
   see: boolean=false;
   examenID: number = 0;
   sessionID: number = 0;
+  ecoleID: number = 0;
   moyenneTotale = new FormControl('')
   inscription = new FormControl('')
   examen = new FormControl('')
@@ -50,6 +51,7 @@ export class MoyenneComponentComponent implements OnInit {
 
 
   })
+
 
   constructor(private noteService : NoteService,private attMatService : AttributionMatiereService,private toastr: ToastrService ,private authenticationService: AuthenticationService ,private moyenneService : MoyenneService,private inscriptionService : InscriptionService,private examenService : ExamenService, private sessionService : SessionService) { }
 
@@ -175,6 +177,7 @@ export class MoyenneComponentComponent implements OnInit {
          (value: any) => {
            this.moyennes = value;
            this.getAllMoyenne();
+           //this.attribuerMention();
            //this.getMoyForAllEcolRang()
            this.toastr.success("Calcule éffectué avec succes...", "Succès")
            this.see = false;
@@ -201,6 +204,30 @@ export class MoyenneComponentComponent implements OnInit {
 
       );
   }
+
+
+
+
+
+
+  // attribuerMention(){
+  //   return this.moyenneService.attributionMention(this.examenID,this.sessionID,this.ecoleID).subscribe(
+  //     (value: any) => {
+  //       this.moyennes = value;
+  //       //this.getMoyForAllEcolRang()
+  //       this.toastr.success("Calcule éffectué avec succes...", "Succès")
+  //       this.see = false;
+  //
+  //     },
+  //     (error: any) => {
+  //       console.log(error.message)
+  //       this.see = false;
+  // })}
+
+
+
+
+
 
 
 

@@ -76,6 +76,15 @@ export class MoyenneService {
     )
   }
 
+  attributionMention(idExamen:number,idsession:number,idEcole:number):Observable<any>{
+    return this.http.get(environment.backendHost+"/Moyenne/attributionMention?idExamen="+idExamen+"&idsession="+idsession+"idEcole="+idEcole)
+  }
+
+  listMoyenExamPerEcole (idExamen:number,idsession:number,idEcole:number):Observable<any>{
+    return this.http.get(environment.backendHost+"/Moyenne/listMoyenneExamParEcole?idExamen="+idExamen+"&idsession="+idsession+"idEcole="+idEcole)
+  }
+
+
   getMoyenneAll(number: number, number2: number) {
     return this.http.get(`${environment.backendHost}/Moyenne/getAllMoyDavibil/${number}/${number2}`)
   }
