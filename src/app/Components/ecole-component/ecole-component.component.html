@@ -4,12 +4,12 @@
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand font-weight-bold bar-turquoise " >Ecole</a>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
-        <button class="btn btn-success m-1 p-1" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search " viewBox="0 0 16 16">
-          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-        </svg></button>
-      </form>
+<!--      <form class="d-flex" role="search">-->
+<!--        <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">-->
+<!--        <button class="btn btn-success m-1 p-1" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search " viewBox="0 0 16 16">-->
+<!--          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
+<!--        </svg></button>-->
+<!--      </form>-->
     </div>
   </nav>
 
@@ -27,40 +27,40 @@
 
 
     <!-- Bouton "Ajouter" -->
-    <button class="btn btn-primary btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Ajouter"  data-toggle="modal" data-target="#cycleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-1"  viewBox="1 1 16 16">
-      <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-    </svg></button>
+<!--    <button class="btn btn-primary btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Ajouter"  data-toggle="modal" data-target="#cycleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-1"  viewBox="1 1 16 16">-->
+<!--      <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>-->
+<!--    </svg></button>-->
 
     <!-- Modal -->
-    <div class="modal fade" id="cycleModal" tabindex="-1" role="dialog" aria-labelledby="cycleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <form class="container">
-            <div class="modal-header">
-              <h5 class="modal-title" id="cycleModalLabel">Ecole Form</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">x</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input class="form-control form-control-sm mb-4" [formControl]="nomEcole" type="text" placeholder="nom Ecole" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="adresse" type="text" placeholder="adresse" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="telephone" type="text" placeholder="telephone" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="email" type="text" placeholder="email" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="ficheStatut" type="text" placeholder="fiche Statut" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="Statut" type="text" placeholder="Statut" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="Matricule" type="text" placeholder="Maricule" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="cycle" type="text" placeholder="cycle" required>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Annuler</button>
-              <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" [disabled]="!nomEcole.valid && !adresse.valid ! && telephone.valid && !email.valid && !ficheStatut.valid && !Statut.valid && !Matricule.valid && !cycle.valid" (click)="addEcol()">Ajouter</button>
+<!--    <div class="modal fade" id="cycleModal" tabindex="-1" role="dialog" aria-labelledby="cycleModalLabel" aria-hidden="true">-->
+<!--      <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--          <form class="container">-->
+<!--            <div class="modal-header">-->
+<!--              <h5 class="modal-title" id="cycleModalLabel">Ecole Form</h5>-->
+<!--              <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                <span aria-hidden="true">x</span>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--              <input class="form-control form-control-sm mb-4" [formControl]="nomEcole" type="text" placeholder="nom Ecole" required>-->
+<!--              <input class="form-control form-control-sm mb-4" [formControl]="adresse" type="text" placeholder="adresse" required>-->
+<!--              <input class="form-control form-control-sm mb-4" [formControl]="telephone" type="text" placeholder="telephone" required>-->
+<!--              <input class="form-control form-control-sm mb-4" [formControl]="email" type="text" placeholder="email" required>-->
+<!--              <input class="form-control form-control-sm mb-4" [formControl]="ficheStatut" type="text" placeholder="fiche Statut" required>-->
+<!--              <input class="form-control form-control-sm mb-4" [formControl]="Statut" type="text" placeholder="Statut" required>-->
+<!--              <input class="form-control form-control-sm mb-4" [formControl]="Matricule" type="text" placeholder="Maricule" required>-->
+<!--              <input class="form-control form-control-sm mb-4" [formControl]="cycle" type="text" placeholder="cycle" required>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Annuler</button>-->
+<!--              <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" [disabled]="!nomEcole.valid && !adresse.valid ! && telephone.valid && !email.valid && !ficheStatut.valid && !Statut.valid && !Matricule.valid && !cycle.valid" (click)="addEcol()">Ajouter</button>-->
 
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+<!--            </div>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
   </div>
 

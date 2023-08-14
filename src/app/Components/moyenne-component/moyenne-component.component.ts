@@ -86,6 +86,10 @@ export class MoyenneComponentComponent implements OnInit {
     })
   }
 
+  attributionMention(){
+
+
+  }
 
   verifiy(){
     this.see = true;

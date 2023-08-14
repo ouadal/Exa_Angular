@@ -18,9 +18,8 @@ import {ExamenComponentComponent} from "../Components/examen-component/examen-co
 import {MatiereComponentComponent} from "../Components/matiere-component/matiere-component.component";
 import {MoyenneComponentComponent} from "../Components/moyenne-component/moyenne-component.component";
 import {NoteComponentComponent} from "../Components/note-component/note-component.component";
-import {
-  CycleTypeExamenComponentComponent
-} from "../Components/cycle-type-examen-component/cycle-type-examen-component.component";
+import {CycleTypeExamenComponentComponent} from "../Components/cycle-type-examen-component/cycle-type-examen-component.component";
+import {StatistiqueComponent} from "../Components/statistique/statistique.component";
 
 const routes: Routes = [
   {
@@ -84,6 +83,9 @@ const routes: Routes = [
       },
       {
         path:'Cycle Type Examen',component:CycleTypeExamenComponentComponent
+
+      },   {
+        path:'Statistiques',component:StatistiqueComponent
 
       },
 

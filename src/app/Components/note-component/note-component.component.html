@@ -181,8 +181,8 @@
 
         <th scope="col">Nom</th>
         <th scope="col">Prenom</th>
-        <th scope="col" style="text-align: right">Note Examen</th>
-        <th scope="col" style="text-align: right">Note Coef</th>
+        <th scope="col" style="font-weight: bold">Note Examen</th>
+        <th scope="col" style="font-weight: bold">Note Coeff</th>
         <th scope="col">Ecole</th>
 <!--        <th scope="col">Examen</th>-->
 <!--        <th scope="col">Session</th>-->
@@ -198,16 +198,15 @@
       <tr [formGroupName]="i"  *ngFor="let note of notes; let i = index" class="">
         <td>{{note.inscription.eleve.nom}}</td>
         <td>{{note.inscription.eleve.prenom}}</td>
-        <td style="text-align: right;color: #0000cc;font-size: 15px">
+        <td style="color: #00d2ff;font-size: 15px">
           <span *ngIf="!modifActif">{{note.noteExam}}</span>
           <span *ngIf="modifActif">
             <input type="hidden" formControlName="id">
             <input type="number" formControlName="note" min="0" step="0.25" class="form-control">
           </span>
         </td>
-        <td style="text-align: right;color: #a10a27;font-size: 15px">{{note.noteExam*note.attributionMatiere.coefficient}}</td>
+        <td style="color: #8E0E00;font-size: 15px;font-weight: bold">{{note.noteExam*note.attributionMatiere.coefficient}}</td>
         <td>{{note.inscription.ecole.nomEcole}}</td>
-
 <!--        <td>{{note.examen.libele}}</td>-->
 <!--        <td>{{note.session.libele}}</td>-->
 

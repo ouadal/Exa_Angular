@@ -33,6 +33,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { OpRegistrationComponent } from './Components/op-registration/op-registration.component';
+import { StatistiqueComponent } from './Components/statistique/statistique.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { OpRegistrationComponent } from './Components/op-registration/op-registr
     MoyenneComponentComponent,
     NoteComponentComponent,
     OpRegistrationComponent,
+    StatistiqueComponent,
 
 
 

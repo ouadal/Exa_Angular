@@ -38,7 +38,9 @@ export class InscriptionComponentComponent implements OnInit {
   constructor(private inscriptionService : InscriptionService,private enrolementService:EnrolementService,private toastr:ToastrService,private authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
-    this.authenticationService.getMyInformations().subscribe({
+    this.  getAllInsc()
+
+      this.authenticationService.getMyInformations().subscribe({
       next:(value:any)=>{
         let idEcole =value.data[0].informations.id;
         console.log(idEcole)
