@@ -8,6 +8,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 import {AttributionMatiereService} from "../../services/attribution-matiere.service";
 import {NoteService} from "../../services/note.service";
+import {environment} from "../../../environments/environment";
+import {EcoleService} from "../../services/ecole.service";
 
 
 @Component({
@@ -19,14 +21,15 @@ export class MoyenneComponentComponent implements OnInit {
 
 
   see: boolean=false;
-  examenID: number = 0;
-  sessionID: number = 0;
-  ecoleID: number = 0;
+  examenID!: number ;
+  sessionID!: number;
+  ecoleID!: number ;
   moyenneTotale = new FormControl('')
   inscription = new FormControl('')
   examen = new FormControl('')
   session = new FormControl('')
   moyennes : any = []
+  ecoles:any = []
   inscriptions : any = []
   examens : any = []
   sessions : any = []
@@ -53,10 +56,12 @@ export class MoyenneComponentComponent implements OnInit {
   })
 
 
-  constructor(private noteService : NoteService,private attMatService : AttributionMatiereService,private toastr: ToastrService ,private authenticationService: AuthenticationService ,private moyenneService : MoyenneService,private inscriptionService : InscriptionService,private examenService : ExamenService, private sessionService : SessionService) { }
+
+  constructor(private ecoleService : EcoleService,private noteService : NoteService,private attMatService : AttributionMatiereService,private toastr: ToastrService ,private authenticationService: AuthenticationService ,private moyenneService : MoyenneService,private inscriptionService : InscriptionService,private examenService : ExamenService, private sessionService : SessionService) { }
 
   ngOnInit(): void {
     //this.genererMoy(idExamen,idSession)
+    this.listeDesEcoleAunExam()
     this.authenticationService.getMyInformations().subscribe({
       next:(value:any)=>{
         let isAdmin = false
@@ -173,6 +178,7 @@ export class MoyenneComponentComponent implements OnInit {
   }
 
   genererMoy(){
+    this.see=true
     return this.moyenneService.genererMoy(this.examenID,this.sessionID).subscribe(
          (value: any) => {
            this.moyennes = value;
@@ -204,6 +210,26 @@ export class MoyenneComponentComponent implements OnInit {
 
       );
   }
+
+
+
+
+  host1 = environment.backendHost+"/api/v1/report/recapitulatif";
+  host2 = environment.backendHost+"/api/v1/report/recapitulatif-Ecole";
+  host3 = environment.backendHost+"/api/v1/report/releve";
+
+
+
+
+listeDesEcoleAunExam(){
+  return this.ecoleService.listeDesEcolesLorsDunExamen(this.examenID).subscribe(
+      (value: any) => {
+        this.ecoles = value;
+}, (error: any) => {
+            console.log(error.message)
+      }
+      )
+}
 
 
 

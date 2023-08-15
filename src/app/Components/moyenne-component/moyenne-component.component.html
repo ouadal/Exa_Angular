@@ -22,7 +22,31 @@ Génerer Moyennes
 
   </button>
 
-    <marquee *ngIf="see==true" direction="right" scrollamount="10" class="text-danger">
+
+
+    <div class="d-flex w-100 justify-content-end">
+      <a  target="_blank" href= "{{host1}}/{{examenID}}/{{sessionID}}" data-bs-toggle="tooltip" data-bs-placement="top" title="le releve recapitulatif" data-target="#cycleModal"class="btn btn-success  btn-sm mr-2"   ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+        <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+        <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+      </svg></a>
+
+
+      <a   target="_blank"  href="{{host3}}/{{examenID}}/{{sessionID}}"   class="btn btn-warning  btn-sm mr-2" data-bs-toggle="tooltip" data-bs-placement="top" title="le releve par eleve" data-target="#cycleModal"  ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+        <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+        <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+      </svg></a>
+
+
+
+      <a   target="_blank"   href="{{host2}}/{{examenID}}/{{sessionID}}/{{ecoleID}}"   data-bs-toggle="tooltip" data-bs-placement="top" title="le releve par Ecole" data-target="#cycleModal"class="btn btn-danger  btn-sm mr-2" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+        <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+        <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+      </svg></a>
+    </div>
+
+
+
+    <marquee *ngIf="see==true" direction="right" scrollamount="8" class="text-danger">
       <strong>.......Traitement de calcul des moyennes encours.......</strong>
     </marquee>
   </div>
@@ -38,7 +62,7 @@ Génerer Moyennes
     <div style="display: flex;justify-content: space-between;width: 100%;">
       <div style="display: flex; align-items: center;width: 50%;">
         <span style="font-weight: bold;font-size: medium">Examen</span>
-        <select  style="width: 100%" class="form-select ml-1 custom-select mb-2"  [(ngModel)]="examenID"  aria-label=" form-select-lg ">
+        <select  style="width: 100%" class="form-select ml-1 custom-select mb-2" (change)="listeDesEcoleAunExam()" [(ngModel)]="examenID"  aria-label=" form-select-lg ">
           <option *ngFor="let ex of examens" [value]="ex.id">{{ex.libele}}</option>
         </select>
       </div>
@@ -46,11 +70,21 @@ Génerer Moyennes
 
       <div style="display: flex; align-items: center;width: 50%;">
         <span style="font-weight: bold;font-size: medium">Session</span>
-        <select (ngModelChange)="genererMoy()"  style="width: 100%"  class="form-select ml-1 custom-select mb-2" [(ngModel)]="sessionID"  aria-label=" form-select-lg ">
+        <select (change)="genererMoy()"  style="width: 100%"  class="form-select ml-1 custom-select mb-2" [(ngModel)]="sessionID"  aria-label=" form-select-lg ">
           <option *ngFor="let se of sessions" [value]="se.id">{{se.libele}}</option>
         </select>
       </div>
     </div>
+
+
+
+    <div style="display: flex; align-items: center;width: 50%;">
+      <span style="font-weight: bold;font-size: medium">Ecole</span>
+      <select   style="width: 100%"  class="form-select ml-1 custom-select mb-2" [(ngModel)]="ecoleID"  aria-label=" form-select-lg ">
+        <option *ngFor="let ec of ecoles" [value]="ec.id">{{ec.nomEcole}}</option>
+      </select>
+    </div>
+  </div>
 
 
 
@@ -127,7 +161,7 @@ Génerer Moyennes
       <tr *ngFor="let moyenne of moyennes" class="">
         <td>{{moyenne.inscription.eleve.nom}}</td>
         <td>{{moyenne.inscription.eleve.prenom}}</td>
-        <td class="text-success text-center">{{moyenne.moyenneTotale}}</td>
+        <td class="text-success text-center">{{moyenne.moyenneTotale|number : '1.2-2'}}</td>
         <td class="text-warning text-center"><b>{{moyenne.rangGenerale}}</b></td>
         <td>{{moyenne.inscription.ecole.nomEcole}}</td>
         <td class="text-danger text-center"><b>{{moyenne.rangEcole}}</b></td>
@@ -193,4 +227,5 @@ Génerer Moyennes
 
     </div>
   </div>
-</div>
+
+

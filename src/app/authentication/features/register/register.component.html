@@ -1,40 +1,62 @@
 <div style="height: 100vh;" class="d-flex justify-content-center align-items-center">
-  <div class="registration-form ">
-    <form>
-        <div class="form-icon">
-            <span><i class="icon icon-user"></i></span>
-         <h1> S'Enregistrer </h1>
-        </div>
-        <div class="form-group">
+  <div class="container">
+    <form action="#" class="form">
+      <h1 style="text-align: center">S'Enregistrer</h1>
+        <div class="input-box">
+          <div class="form-group">
             <input type="text" class="form-control item" [formControl]="username" id="username" placeholder="Nom d'utilisateur">
+          </div>
         </div>
+
+      <div class="input-box">
         <div class="form-group">
             <input type="password" class="form-control item" [formControl]="password" id="password" placeholder="Mot de passe">
         </div>
+      </div>
+
+
+
+      <div class="input-box">
         <div class="form-group">
           <input type="text" class="form-control item" [formControl]="nomEcole" id="nomEcole" placeholder="Nom école">
       </div>
+      </div>
+      <div class = "column">
+<div class="input-box">
         <div class="form-group">
             <input type="email" class="form-control item" [formControl]="email" id="email" placeholder="Email" inputmode="email">
           <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">Veuillez saisir une adresse e-mail valide.</div>
         </div>
+</div>
+  <div class="input-box">
       <div class="form-group">
         <input type="tel" class="form-control item" [formControl]="telephone" id="phone-number" placeholder="Numéro de téléphone" inputmode="numeric">
         <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="error-message">Veuillez saisir un numéro de téléphone valide (chiffres uniquement).</div>
 
       </div>
+  </div>
+</div>
+
+      <div class="input-box">
         <div class="form-group">
             <input type="text" class="form-control item" [formControl]="adresse" id="adresse" placeholder="Adresse">
         </div>
+      </div>
+
+
+
+
         <div style="width: 100%" class="d-flex justify-content-center align-items-center">
-          <span>Cycle</span>
           <select style="width: 100%" class="form-select ml-1" [formControl]="cycleSelect"  aria-label=".form-select-lg ">
             <option *ngFor="let cycle of cycles" [value]="cycle.id">{{cycle.libele}}</option>
           </select>
         </div>
+
+
+
       <div class="mt-4"></div>
         <div class="form-group">
-            <button type="button" class="btn btn-block create-account" (click)="register()" [disabled]="!username.valid || !password.valid || !nomEcole.valid || !email.valid || !telephone.valid || !adresse.valid || !cycleSelect.valid">Crée un compte</button>
+            <button type="button" class="btn btn-block create-account " style="text-decoration-color: #e5e8eb" (click)="register()" [disabled]="!username.valid || !password.valid || !nomEcole.valid || !email.valid || !telephone.valid || !adresse.valid || !cycleSelect.valid">Crée un compte</button>
         </div>
     </form>
   </div>

@@ -1,162 +1,418 @@
-/*form {*/
-/*  background-color: #FFFFFF;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  flex-direction: column;*/
-/*  padding: 0 50px;*/
-/*  height: 100%;*/
-/*  text-align: center;*/
-/*}*/
-
-/*input {*/
-/*  background-color: #eee;*/
-/* border-radius: inherit;*/
-/*  padding: 12px 15px;*/
-/*  margin: 8px 0;*/
-/*  width: 100%;*/
-/*  outline: none;*/
-/*}*/
-
-/*span{*/
-/*  background-color: #FFFFFF;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  flex-direction: column;*/
-/*  padding: 0 50px;*/
-/*  height: 100%;*/
-/*  text-align: center;*/
-
-/*}*/
-
-
-body {
-  font-family: Arial, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #004e92;
+}
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #004e92;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #2948ff;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+}
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+
+
+/*body {*/
+/*  font-family: Arial, sans-serif;*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*}*/
+
+/*.container {*/
+/*  height: 100vh;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
+
+/*.registration-form {*/
+/*  width: 400px;*/
+/*  padding: 30px;*/
+/*  background-color: #1CB5E0;*/
+/*  border-radius: 10px;*/
+/*  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*.form-icon {*/
+/*  text-align: center;*/
+/*  font-size: 40px;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*.form-icon i {*/
+/*  color: #007bff;*/
+/*}*/
+
+/*.form-group {*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*.form-control {*/
+/*  width: 100%;*/
+/*  padding: 10px;*/
+/*  border: 1px solid #ccc;*/
+/*  border-radius: 5px;*/
+/*}*/
+
+/*.select-group {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  margin-bottom: 20px;*/
+/*  background-color: #fdf59a;*/
+/*}*/
+
+/*.select-group span {*/
+/*  flex: 1;*/
+/*}*/
+
+/*.form-select {*/
+/*  flex: 3;*/
+/*  width: 100%;*/
+/*  padding: 10px;*/
+/*  border: 1px solid #ccc;*/
+/*  border-radius: 5px;*/
+/*}*/
+
+/*.btn {*/
+/*  width: 100%;*/
+/*  padding: 12px;*/
+/*  color: #fff;*/
+/*  font-size: 16px;*/
+/*  border: none;*/
+/*  border-radius: 5px;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.3s ease-in-out;*/
+/*}*/
+
+/*.btn.create-account {*/
+/*  background-color: #007bff;*/
+/*}*/
+
+/*.btn.create-account:disabled {*/
+/*  background-color: #ccc;*/
+/*  cursor: not-allowed;*/
+/*}*/
+
+/*.btn.create-account:hover:not(:disabled) {*/
+/*  background-color: #0056b3;*/
+/*}*/
+
+
+/* .landscape-mode {*/
+/*   height: 100vh;*/
+/*   display: flex;*/
+/*   justify-content: center;*/
+/*   align-items: center;*/
+/*   transform: rotate(90deg);*/
+/*   transform-origin: left top;*/
+/*   overflow: auto;*/
+/*   writing-mode: tb-rl; !* Cette propriété peut aider à l'affichage en mode paysage sur certains navigateurs *!*/
+/* }*/
+
+/*.btn.create-account {*/
+/*  !* ... Vos styles actuels ... *!*/
+/*  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;*/
+/*}*/
+
+/*.btn.create-account:hover:not(:disabled) {*/
+/*  background-color: #0056b3;*/
+/*  transform: scale(1.05);*/
+/*}*/
+
+
+
+
+/*.form-group {*/
+/*  position: relative;*/
+/*}*/
+
+/*.form-group input,*/
+/*.form-group select {*/
+/*  width: 100%;*/
+/*  padding: 10px;*/
+/*  border: 1px solid #ccc;*/
+/*  border-radius: 5px;*/
+/*  transition: border-color 0.3s ease-in-out;*/
+/*}*/
+
+/*.form-group input:focus,*/
+/*.form-group select:focus {*/
+/*  border-color: #007bff;*/
+/*  outline: none;*/
+/*  box-shadow: 0 0 5px #007bff;*/
+/*}*/
+
+
+/* Apply some basic styling to the whole page */
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgb(130, 106, 251);
 }
 
 .container {
-  height: 100vh;
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+
+.container .form {
+  margin-top: 30px;
+}
+
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form .column {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  column-gap: 15px;
 }
 
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background:#bdc3c7;
+}
+
+.form button:hover {
+  background: #2948ff;
+}
+
+
+
+
+/* Style the registration form container */
 .registration-form {
-  width: 400px;
-  padding: 30px;
-  background-color: #1CB5E0;
+  background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin:  30px;
+  width: auto;
 }
 
+/* Style the form header */
 .form-icon {
   text-align: center;
-  font-size: 40px;
   margin-bottom: 20px;
 }
-
 .form-icon i {
-  color: #007bff;
+  font-size: 48px;
+  color: #007bff; /* Change to your desired color */
 }
 
+/* Style the form title */
+.registration-form h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Style the form input fields */
 .form-group {
   margin-bottom: 20px;
-}
+  display: flex;
 
+
+}
 .form-control {
-  width: 100%;
+  width: 48%; /* Adjust as needed for spacing between inputs */
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.select-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: #fdf59a;
-}
-
-.select-group span {
-  flex: 1;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 .form-select {
-  flex: 3;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.btn {
-  width: 100%;
-  padding: 12px;
-  color: #fff;
+  border-radius: 4px;
   font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  box-sizing: border-box;
 }
 
-.btn.create-account {
+/* Style the error messages */
+.error-message {
+  color: #dc3545; /* Red color for error messages */
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Style the submit button */
+.create-account {
   background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
 }
-
-.btn.create-account:disabled {
+.create-account:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 
-.btn.create-account:hover:not(:disabled) {
-  background-color: #0056b3;
+/* Style the select dropdown */
+select.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-size: 24px 24px;
+  background-position: right 10px center;
 }
 
-
- .landscape-mode {
-   height: 100vh;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   transform: rotate(90deg);
-   transform-origin: left top;
-   overflow: auto;
-   writing-mode: tb-rl; /* Cette propriété peut aider à l'affichage en mode paysage sur certains navigateurs */
- }
-
-.btn.create-account {
-  /* ... Vos styles actuels ... */
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+/* Add spacing between elements */
+.mt-4 {
+  margin-top: 16px;
 }
 
-.btn.create-account:hover:not(:disabled) {
-  background-color: #0056b3;
-  transform: scale(1.05);
-}
-
-
-
-
-.form-group {
-  position: relative;
-}
-
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border-color 0.3s ease-in-out;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 5px #007bff;
-}
