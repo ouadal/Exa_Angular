@@ -36,7 +36,7 @@ export class NoteComponentComponent implements OnInit {
   enrolements: any = []
   examens: any = []
   sessions: any = []
-  sessionSelect = new FormControl(0)
+  sessionSelect = new FormControl(null)
   examenSelect = new FormControl(0)
   matSelect=new FormControl(0)
   attributMatSelect= new FormControl(0)
@@ -66,15 +66,18 @@ export class NoteComponentComponent implements OnInit {
     return this.noteFormArray.get('notes') as FormArray
   }
   ngOnInit(): void {
-    //this.getAllSession()
+    this.getAllSession()
     //this.getAllAttMat()
+    this. listGeneration()
+
+    //this.getAllExam()
     this.noteFormArray = this.fb.group({
       'notes' : new FormArray([])
     })
 
     this.authenticationService.getMyInformations().subscribe({
       next:(value:any)=>{
-        let isAdmin = false
+        let isAdmin = true
         console.log(value)
         for (let i = 0; i < value.data[0].roles.length; i++) {
           if(value.data[0].roles[i].name == "ROLE_ADMIN"){
@@ -83,10 +86,12 @@ export class NoteComponentComponent implements OnInit {
             break
           }
         }
-        if(isAdmin){
+        if(this.isAdmin){
           //this.getAllExamPourAdmin()
           this.getAllExam()
         }else {
+          console.error("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+
           let idEcole =value.data[0].informations.id;
           //this.getListExamPerEcol(idEcole)
           this.loadAllTestNumber1(idEcole);
@@ -156,6 +161,7 @@ export class NoteComponentComponent implements OnInit {
           //this.getAllExamPourAdmin()
           this.getAllExam()
         }else {
+          console.error("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOO")
           let idEcole =value.data[0].informations.id;
           this.attMatService.getAttMatByEcolConnAndExamen(idEcole,this.examenSelect.value!).subscribe(
             (value1: any) => {
@@ -176,37 +182,7 @@ export class NoteComponentComponent implements OnInit {
 
             }
             )
-          /*this.examenService.listExamPerEcol(idEcole).subscribe(
-            (value: any) => {
-              this.examens = value;
-              this.attMatService.getAttMatByEcolConnAndExamen(idEcole,this.examenSelect.value!).subscribe(
-                (value1: any) => {
-                  this.attributMats = value1;
-                  console.log(this.attributMats)
-                  this.sessionService.getAllSession().subscribe(
-                    (value2: any) => {
-                      this.sessions = value2;
-                      //this.getAllEcolThatAreEnrolled();
-                      this.listNotePerExamSesionMat(this.examenSelect.value!,this.sessionSelect.value!,this.attributMatSelect.value!)
-                      console.log(this.sessions)
-                    },
-                    (error: any) => {
-                      console.log(error.message)
-                    }
-                  );
-                },
-                (error: any) => {
-                  console.log(error.message)
-                }
 
-              );
-              //this.getAllEcolThatAreEnrolled();
-              console.log(this.examens)
-            },
-            (error: any) => {
-              console.log(error.message)
-            }
-          );*/
         }
       },
       error:(err)=>{
@@ -229,7 +205,7 @@ export class NoteComponentComponent implements OnInit {
               (value2: any) => {
                 this.sessions = value2;
                 this.sessionSelect.patchValue(value2[0].id)
-                //this.getAllEcolThatAreEnrolled();
+                this.getAllEcolThatAreEnrolled();
                 this.listNotePerExamSesionMat(this.examenSelect.value!,this.sessionSelect.value!,this.attributMatSelect.value!)
                 console.log(this.sessions)
               },
@@ -526,6 +502,7 @@ export class NoteComponentComponent implements OnInit {
     this.noteService.listNotePerExamSesionMat(this.examenSelect.value, this.sessionSelect.value,this.attributMatSelect.value).subscribe(
       (value: any) => {
         this.notes = value;
+
         console.log(this.notes)
 
         // FOR FORMARRAY
@@ -625,6 +602,12 @@ export class NoteComponentComponent implements OnInit {
     }
 
   }
+
+
+  listGeneration(){
+    this.genererNote()
+
+  }
   genererNote(){
         if(this.sessionSelect.value){
           return this.noteService.genereNotePerExam(this.examenSelect.value, this.sessionSelect.value).subscribe(
@@ -632,9 +615,12 @@ export class NoteComponentComponent implements OnInit {
               this.result = value;
               if (this.result == false){
                 this.toastr.warning("Note déja générer .................", "Alert")
-
+                this.reloadData()
+                this.reloadDataMat()
               }else {
                 this.toastr.success("Note généree avec succes", "Succès")
+                this.reloadData()
+                this.reloadDataMat()
               }
 
             },

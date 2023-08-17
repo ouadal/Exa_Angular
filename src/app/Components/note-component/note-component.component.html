@@ -64,7 +64,7 @@
 
     <div style="display: flex; align-items: center;">
       <span style="font-weight: bold;font-size: medium">Examen</span>
-      <select (change)="reloadData()"  style="width: 100%" class="form-select ml-1 custom-select mb-2" [formControl]="examenSelect"  aria-label=".form-select-lg">
+      <select (change)="reloadData()"   style="width: 100%" class="form-select ml-1 custom-select mb-2" [formControl]="examenSelect"  aria-label=".form-select-lg">
         <option *ngFor="let ex of examens" [value]="ex.id">{{ex.libele}}</option>
       </select>
     </div>
@@ -75,13 +75,12 @@
       <select (change)="reloadData()" style="width: 100%" class="form-select ml-1 custom-select mb-2" [formControl]="sessionSelect" aria-label=".form-select-lg">
         <option *ngFor="let se of sessions" [value]="se.id">{{se.libele}}</option>
       </select>
-
     </div>
 
 
     <div style="display: flex; align-items: center;">
       <span style="font-weight: bold;font-size: medium">Matière</span>
-      <select (change)="reloadDataMat()" style="width: 100%" class="form-select ml-1 custom-select mb-2" [formControl]="attributMatSelect" aria-label=".form-select-lg">
+      <select (click)="reloadDataMat()" style="width: 100%" class="form-select ml-1 custom-select mb-2" [formControl]="attributMatSelect" aria-label=".form-select-lg">
         <option *ngFor="let att of attributMats" [value]="att.id">{{att.matiere.libele}}</option>
       </select>
 
@@ -103,8 +102,8 @@
               </button>
             </div>
             <div class="modal-body">
-              <span style="font-weight: bold;font-size: medium">note Exam</span>
-              <input style="width: 100%" class="form-control form-control-sm mb-4" [formControl]="noteExam" type="text" placeholder="note Examen" required>
+<!--              <span style="font-weight: bold;font-size: medium">note Exam</span>-->
+<!--              <input style="width: 100%" class="form-control form-control-sm mb-4" [formControl]="noteExam" type="text" placeholder="note Examen" required>-->
 
 
               <div style="display: flex; align-items: center;">

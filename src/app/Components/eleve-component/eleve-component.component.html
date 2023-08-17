@@ -27,7 +27,7 @@
 
 
     <!-- Bouton "Ajouter" -->
-    <button class="btn btn-primary btn-sm"   data-bs-toggle="tooltip" data-bs-placement="top" title="Ajouter" data-toggle="modal" data-target="#cycleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-1"  viewBox="1 1 16 16">
+    <button *ngIf="isAdmin"  class="btn btn-primary btn-sm"   data-bs-toggle="tooltip" data-bs-placement="top" title="Ajouter" data-toggle="modal" data-target="#cycleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-1"  viewBox="1 1 16 16">
       <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
     </svg></button>
 
@@ -93,7 +93,6 @@
         <th scope="col">Prenom</th>
         <th scope="col">Date de Naissance</th>
         <th scope="col">Contact Parent</th>
-        <th scope="col">Examen</th>
         <th scope="col">Actions</th>
 
       </tr>
@@ -104,7 +103,6 @@
         <td>{{eleve.prenom}}</td>
         <td>{{eleve.date_naissance | date}}</td>
         <td>{{eleve.contactParent}}</td>
-        <td>{{eleve.examen}}</td>
 
 
         <button  (click)="editElev(eleve.id) " class="btn btn-primary btn-sm m-1"   data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier" data-toggle="modal" data-target="#cycleModalEdit" >

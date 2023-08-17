@@ -18,6 +18,7 @@ export class CycleTypeExamenComponentComponent implements OnInit {
 
 
   cycleTypeExamens : any = []
+  cycles : any = []
   typeExamens : any = []
 
 
@@ -38,9 +39,11 @@ export class CycleTypeExamenComponentComponent implements OnInit {
   constructor(private typeExamenService : TypeExamenService,private toastr:ToastrService,private cycleService : CycleService,private cycleTypeExamenService : CycleTypeExamenService,private authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
-    //this.getAllCycleTypExam()
     this.loadCycle()
     this.loadTypeExam()
+    this.getAllCycleTypExam()
+
+
   }
 
 
@@ -52,8 +55,8 @@ export class CycleTypeExamenComponentComponent implements OnInit {
         this.cycleService.getAllCycle().subscribe(
           (value: any) => {
             console.log("heloooooooooooooooooooooooooooooooooooooooooooooooooooooooo")
-            this.cycleTypeExamens= value;
-            console.log(this.cycleTypeExamens)
+            this.cycles= value;
+            console.log(this.cycles)
           },
           (error: any) => {
             console.log(error.message)
@@ -64,6 +67,8 @@ export class CycleTypeExamenComponentComponent implements OnInit {
       }
     })
   }
+
+
 
   loadTypeExam(){
     //parseInt(this.examenSelect.value!)

@@ -33,7 +33,7 @@ export class AttributionMatiereService {
   addAttMAt(data:any): Observable<any> {
     return this.http.post(`${environment.backendHost}/AttributionMat/creeAttribution`,data).pipe(
       map(response => {
-        this.toastr.success('Année ajoutée avec succès !', 'Succès');
+        this.toastr.success('Matiere ajoutée avec succès !', 'Succès');
         return response;
       })
     )

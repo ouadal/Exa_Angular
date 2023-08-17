@@ -31,7 +31,7 @@ export class CycleTypeExamenService {
   }
 
   getAllCycleTypExam(): Observable<any> {
-    return this.http.get(`${environment.backendHost}/CycleType/getAllCycle`)
+    return this.http.get(`${environment.backendHost}/CycleType/getAllCycleTypeExamen`)
   }
 
   listtypeExamenPerCycle(id:number): Observable<any> {

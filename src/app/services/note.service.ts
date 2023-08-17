@@ -60,7 +60,7 @@ export class NoteService {
   // findNotePerExamAttribSess(idExam: number | null, idAttriMat: number | null, idSession: number | null){
   //   return this.http.get(environment.backendHost+"/Note/findNotePerExamAttribSess/"+idExam+"/"+idSession+"/"+idAttriMat)
   // }
-  listNotePerExamSesionMat(idExam: number | null, idSession: number | null, idAttriMat: number | null){
+  listNotePerExamSesionMat(idExam: number | null, idSession: number | any, idAttriMat: number | null){
     return this.http.get(environment.backendHost+"/Note/listNotePerExamSesionMat?idExamen="+idExam+"&idSession="+idSession+"&idMat="+idAttriMat)
   }
 

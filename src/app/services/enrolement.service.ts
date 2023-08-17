@@ -45,7 +45,7 @@ export class EnrolementService {
     )
   }
   deleteEnrol(id: number): Observable<any> {
-    return this .http.delete(`${environment.backendHost}/Enrolement//suppEnrol/${id}`).pipe(
+    return this .http.delete(`${environment.backendHost}/Enrolement/suppEnrol/${id}`).pipe(
       map(response => {
         this.toastr.success('Enrolement supprimé avec succès !', 'Succès');
         return response;

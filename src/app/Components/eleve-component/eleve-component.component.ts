@@ -30,6 +30,7 @@ export class EleveComponentComponent implements OnInit {
     date_naissance: this.date_naissance,
     contactParent: this.contactParent,
   });
+  isAdmin: boolean = true;
   constructor(private eleveService : EleveService,private enrollementService:EnrolementService,private authenticationService:AuthenticationService,private toastr:ToastrService) { }
 
   ngOnInit(): void {

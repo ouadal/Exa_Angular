@@ -18,7 +18,7 @@ export class ExamenComponentComponent implements OnInit {
   cycleTypeExamen = new FormControl('')
   annee = new FormControl('')
   ecole = new FormControl('')
-
+  isAdmin : boolean = true
   eleves : any = []
   examens : any = []
   cycleTypeExamens : any = []
@@ -121,7 +121,6 @@ export class ExamenComponentComponent implements OnInit {
     //@ts-ignore
     this.examenService.getExamById(id).subscribe(
       (examen: any) => {
-        // Mettre à jour les contrôles du formulaire avec les données existantes
         this.selectedExamenId = id;
         this.libele.setValue(examen.libele);
         console.log(this.examenForm.value)
@@ -133,13 +132,12 @@ export class ExamenComponentComponent implements OnInit {
   }
 
   saveEditExam() {
-    // Vérifier si les valeurs du formulaire sont valides
     if (this.examenForm.valid) {
       // Créer l'objet avec les nouvelles valeurs
       const updatedExam = {
         libele: this.libele.value,
         statut: this.statut.value,
-        cycleTypeExamen: this.  cycleTypeExamen.value,
+        cycleTypeExamen: this.cycleTypeExamen.value,
         annee: this.annee.value,
         ecole: this.ecole.value
 
@@ -150,7 +148,6 @@ export class ExamenComponentComponent implements OnInit {
         (value: any) => {
           console.log('Examen mise à jour avec succès !');
           console.log(value)
-          // Réinitialiser le formulaire après la mise à jour
           this.examenForm.reset();
           // Mettre à jour la liste des années avec les nouvelles données
           this.ngOnInit();

@@ -27,7 +27,7 @@
 
 
     <!-- Bouton "Ajouter" -->
-    <button class="btn btn-primary btn-sm" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Ajouter" data-target="#cycleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-1"  viewBox="1 1 16 16">
+    <button *ngIf="isAdmin"  class="btn btn-primary btn-sm" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Ajouter" data-target="#cycleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-1"  viewBox="1 1 16 16">
       <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
     </svg></button>
 
@@ -138,21 +138,21 @@
 
 
 
-        <button (click)="deleteExam(examen.id)" class="btn btn-sm btn-danger mr-1 m-1"   data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer" data-toggle="modal" data-target="#confirmDeleteModal">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-          </svg>
+<!--        <button (click)="deleteExam(examen.id)" class="btn btn-sm btn-danger mr-1 m-1"   data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer" data-toggle="modal" data-target="#confirmDeleteModal">-->
+<!--          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">-->
+<!--            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>-->
+<!--          </svg>-->
 
-        </button>
+<!--        </button>-->
 
-        <button (click)="setActivationExam(examen)" class="btn btn-sm btn-success mr-1 m-1"    title="Activer Examen" >
+        <button  (click)="setActivationExam(examen)" class="btn btn-sm btn-success mr-1 m-1"    title="Activer Examen" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
             <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
           </svg>
 
         </button>
      <div *ngIf="examen.statut">
-  <button [disabled]="!examen.statut"  (click)="DesactiverExam(examen.id)" class="btn btn-sm btn-warning mr-1 m-1"    title="Desactiver Examen" >
+  <button [disabled]="!examen.statut" (click)="DesactiverExam(examen.id)" class="btn btn-sm btn-warning mr-1 m-1"    title="Desactiver Examen" >
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
       <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
     </svg>
@@ -174,10 +174,10 @@
               <div class="modal-body">
                 <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-danger"  data-dismiss="modal"(click)="deleteExam(examen.id)">Supprimer</button>
-              </div>
+<!--              <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>-->
+<!--                <button type="button" class="btn btn-danger"  data-dismiss="modal"(click)="deleteExam(examen.id)">Supprimer</button>-->
+<!--              </div>-->
             </div>
           </div>
         </div>
@@ -205,10 +205,12 @@
             </div>
             <div class="modal-body">
               <input class="form-control form-control-sm mb-4" [formControl]="libele" type="text" placeholder="libele" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="statut" type="text" placeholder="statut" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="cycleTypeExamen" type="text" placeholder="cycle Type examen" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="annee" type="text" placeholder="annee" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="ecole" type="text" placeholder="ecole" required>
+              <label style="font-weight: bold; font-size: medium;">Cycle type examen</label>
+
+              <select style="width: 100%" class="form-select ml-1 custom-select mb-2" [formControl]="cycleTypeExamen"  aria-label=" form-select-lg "  placeholder="cycle type exam">
+                <option *ngFor="let ct of cycleTypeExamens" [value]="ct.id">{{ct.typeExamen.libele}}</option>
+
+              </select>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary btn-sm mr-1" data-dismiss="modal">Annuler</button>

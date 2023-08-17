@@ -165,8 +165,18 @@
               </button>
             </div>
             <div class="modal-body">
-              <input class="form-control form-control-sm mb-4" [formControl]="examen" type="text" placeholder="examen" required>
-              <input class="form-control form-control-sm mb-4" [formControl]="ecole" type="text" placeholder="ecole" required>
+              <div class="modal-body">
+                <select style="width: 100%" class="form-select ml-1 custom-select mb-2" [formControl]="examenSelect"  aria-label=".form-select-lg">
+                  <option *ngFor="let ex of examens" [value]="ex.id">{{ex.libele}}</option>
+                </select>
+
+
+                <select style="width: 100%" class="form-select ml-1 custom-select" [formControl]="ecoleSelect"  aria-label=".form-select-lg">
+                  <option *ngFor="let ec of ecoles" [value]="ec.id">{{ec.nomEcole}}</option>
+                </select>
+
+
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary btn-sm mr-1" data-dismiss="modal">Annuler</button>
