@@ -18,6 +18,11 @@ import {AuthenticationService} from "../../services/authentication.service";
 })
 export class StatistiqueComponent implements OnInit {
 
+  chartdata : any ;
+  ecoledata:any[] = [];
+  tauxdata:any[] = [];
+  colordata:any[] = [];
+
 // juste pour afficher le select de session et de examen //
   idExam!: number;
   idSession!: number;
@@ -39,10 +44,7 @@ export class StatistiqueComponent implements OnInit {
   ngOnInit(): void {
     this.verifiy()
     this.listeDesEcoleAunExam()
-    this.renderChart();
-
     this.reloadData()
-
     this.authenticationService.getMyInformations().subscribe({
       next:(value:any)=>{
         let isAdmin = false
@@ -68,20 +70,20 @@ export class StatistiqueComponent implements OnInit {
 
   }
 
-  renderChart() {
-    const myChart = new Chart("CV", {
-      type: 'bar',
+  renderChart(ecoledata:any,tauxdata:any,type:any,id:any) {
+    const myChart = new Chart(id, {
+      type: type,
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ecoledata,
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          label: 'taux de reussite par écoles',
+          data:tauxdata,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)'
+            'rgb(161,10,39)'
 
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)'
+            'rgb(99,190,255)'
 
           ],
           borderWidth: 1
@@ -181,48 +183,29 @@ export class StatistiqueComponent implements OnInit {
   }
 
 
-  // genererMoy(){
-  //   this.see=true
-  //   return this.moyenneService.genererMoy(this.idExam,this.idSession).subscribe(
-  //     (value: any) => {
-  //       this.moyennes = value;
-  //       //this.getAllMoyenne();
-  //       //this.attribuerMention();
-  //       //this.getMoyForAllEcolRang()
-  //       this.toastr.success("Calcule éffectué avec succes...", "Succès")
-  //       this.see = false;
-  //
-  //     },
-  //     (error: any) => {
-  //       console.log(error.message)
-  //       this.see = false;
-  //     }
-  //
-  //   );
-  // }
-
-  // getAllMoyenne() {
-  //   this.moyenneService.getMoyenneAll(this.idExam,this.idSession).subscribe({
-  //     next:data =>{
-  //       this.moyennes = data;
-  //     }
-  //   })
-  // }
 
 
   reloadData() {
     this.examenService.getStatisques(this.idExam,this.idSession).subscribe(
 
-      res =>console.log(res)
-      //   let hashMapData = res[''].map((re:any) => re.ecoles);
-      //   hashMapData = res[''].map((re:any) => re.ecoles);
-      //   hashMapData = res[''].map((re:any) => re.ecoles);
-      // }
+      res =>{ this.chartdata = res;
+        if(this.chartdata!=null){
+          for(let i=0;i<this.chartdata.length; i++){
+            console.log(this.chartdata[i]);
+            this.ecoledata.push(this.chartdata[i].ecole.nomEcole)
+            this.tauxdata.push(this.chartdata[i].taux)
+          }
+          this.renderChart(this.ecoledata,this.tauxdata,'bar','vc');
+          this.renderChart(this.ecoledata,this.tauxdata,'pie','CV');
+        }
+
+      }
       // next:(value:any)=>{let hashMapData: any[] = [];
       // value.data.forEach(response:any)=>{
       //   this.labels.push(response.ecoles)
       //     data.push(response.datasets.data)
-      //   }}
+      //   }
+
 
     )
   }
