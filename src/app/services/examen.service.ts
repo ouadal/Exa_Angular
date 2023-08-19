@@ -17,6 +17,10 @@ export class ExamenService {
   }
 
 
+  getStatisques(idExam: number , idSession: number ):Observable<any>{
+    return this.http.get(`${environment.backendHost}/Examen/taux-reussite-par-ecole?idexamen=${idExam}&idsession=${idSession}`)
+  }
+
   DesactiverExam(id: number): Observable<any>{
     return this.http.put(`${environment.backendHost}/Examen/ExamToFalse/${id}`,undefined)
 

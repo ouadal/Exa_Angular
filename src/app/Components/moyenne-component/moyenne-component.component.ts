@@ -60,7 +60,8 @@ export class MoyenneComponentComponent implements OnInit {
   constructor(private ecoleService : EcoleService,private noteService : NoteService,private attMatService : AttributionMatiereService,private toastr: ToastrService ,private authenticationService: AuthenticationService ,private moyenneService : MoyenneService,private inscriptionService : InscriptionService,private examenService : ExamenService, private sessionService : SessionService) { }
 
   ngOnInit(): void {
-    //this.genererMoy(idExamen,idSession)
+    //this.genererMoy()
+    this.verifiy()
     this.listeDesEcoleAunExam()
     this.authenticationService.getMyInformations().subscribe({
       next:(value:any)=>{

@@ -3,8 +3,29 @@
     <div class="card-body">
       <h5> STATISTIQUES</h5>
       <hr>
+      <div style="display: flex;justify-content: space-between;width: 100%;">
+        <div style="display: flex; align-items: center;width: 50%;">
+          <span style="font-weight: bold;font-size: medium">Examen</span>
+          <select  style="width: 100%" class="form-select ml-1 custom-select mb-2" (change)="reloadData()" [(ngModel)]="idExam"  aria-label=" form-select-lg ">
+            <option *ngFor="let ex of examens" [value]="ex.id">{{ex.libele}}</option>
+          </select>
+        </div>
+
+
+        <div style="display: flex; align-items: center;width: 50%;">
+          <span style="font-weight: bold;font-size: medium">Session</span>
+          <select style="width: 100%"  class="form-select ml-1 custom-select mb-2" [(ngModel)]="idSession" (change)="reloadData()" aria-label=" form-select-lg ">
+            <option *ngFor="let se of sessions" [value]="se.id">{{se.libele}}</option>
+          </select>
+        </div>
       <div>
+
+
+
         <canvas id="CV" aria-label="chart" role="img"></canvas>
+
+
+        </div>
       </div>
     </div>
   </div>
