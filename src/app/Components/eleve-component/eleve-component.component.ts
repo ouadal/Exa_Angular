@@ -17,6 +17,8 @@ export class EleveComponentComponent implements OnInit {
   prenom = new FormControl('')
   date_naissance = new FormControl('')
   contactParent = new FormControl('')
+  sexe: string[] = ['Masculin', 'Féminin'];
+  selectedSexe = new FormControl('Masculin')
   enrollement = new FormControl('')
   eleves : any = []
   enrollements : any = []
@@ -29,6 +31,7 @@ export class EleveComponentComponent implements OnInit {
     prenom: this.prenom,
     date_naissance: this.date_naissance,
     contactParent: this.contactParent,
+    sexe: this.selectedSexe
   });
   isAdmin: boolean = true;
   constructor(private eleveService : EleveService,private enrollementService:EnrolementService,private authenticationService:AuthenticationService,private toastr:ToastrService) { }
@@ -65,7 +68,8 @@ export class EleveComponentComponent implements OnInit {
       prenom: this.prenom.value,
       date_naissance: this.date_naissance.value,
       contactParent: this.contactParent.value,
-      idEnrolement: this.enrollement.value
+      idEnrolement: this.enrollement.value,
+      sexe:this.selectedSexe.value
     }
     console.log(data)
     this.eleveService.addElev(data).subscribe({
@@ -90,6 +94,7 @@ export class EleveComponentComponent implements OnInit {
         this.prenom.setValue(eleve.prenom);
         this.date_naissance.setValue(eleve.date_naissance);
         this.contactParent.setValue(eleve.contactParent);
+        this.selectedSexe.setValue(eleve.sexe)
         this.enrollement.setValue(eleve.enrollement);
 
         console.log(this.eleveForm.value)
@@ -109,6 +114,7 @@ export class EleveComponentComponent implements OnInit {
         prenom: this.prenom.value,
         date_naissance:this.date_naissance.value,
         contactParent: this.contactParent.value,
+        sexe:this.selectedSexe.value,
         idEnrollement:this.enrollement.value
 
 
@@ -198,7 +204,5 @@ export class EleveComponentComponent implements OnInit {
     this.activeElev={...eleve}
   }
 }
-
-
 
 

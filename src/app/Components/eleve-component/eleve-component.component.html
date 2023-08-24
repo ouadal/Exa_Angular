@@ -44,7 +44,7 @@
             </div>
             <div class="modal-body">
 
-              <select style="width: 100%" class="form-select " [formControl]="enrollement"  aria-label=" form-select-lg ">
+              <select style="width: 100%" class="form-select " [formControl]="enrollement"  aria-label=" form-select-lg " placeholder="examen">
                 <option *ngFor="let en of enrollements" [value]="en.id">{{en.examen.libele}}</option>
               </select>
 
@@ -54,6 +54,11 @@
               <input class="form-control form-control-sm mb-4" [formControl]="prenom" type="text" placeholder="prenom" required>
               <input class="form-control form-control-sm mb-4" [formControl]="date_naissance" type="date" placeholder="date naissance" required>
               <input class="form-control form-control-sm mb-4" [formControl]="contactParent" type="text" placeholder="contact parent" required>
+
+
+                <select class="form-control" id="sexe" [formControl]="selectedSexe" name="sexe">
+                  <option *ngFor="let se of sexe" [value]="se">{{ se }}</option>
+                </select>
 
             </div>
             <div class="modal-footer">
@@ -93,6 +98,7 @@
         <th scope="col">Prenom</th>
         <th scope="col">Date de Naissance</th>
         <th scope="col">Contact Parent</th>
+        <th scope="col">Sexe</th>
         <th scope="col">Actions</th>
 
       </tr>
@@ -103,6 +109,7 @@
         <td>{{eleve.prenom}}</td>
         <td>{{eleve.date_naissance | date}}</td>
         <td>{{eleve.contactParent}}</td>
+        <td>{{eleve.sexe}}</td>
 
 
         <button  (click)="editElev(eleve.id) " class="btn btn-primary btn-sm m-1"   data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier" data-toggle="modal" data-target="#cycleModalEdit" >

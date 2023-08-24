@@ -43,7 +43,10 @@
               </button>
             </div>
             <div class="modal-body">
-              <input class="form-control form-control-sm mb-4" [formControl]="libele" type="text" placeholder="libele" required>
+
+              <input class="form-control form-control-sm mb-4" [formControl]="libele" type="text" placeholder="libele" required aria-label=".form-select-lg">
+
+
               <input class="form-control form-control-sm mb-4" [formControl]="codeMat" type="text" placeholder="code Matiere" required>
 
 
@@ -161,7 +164,10 @@
               </button>
             </div>
             <div class="modal-body">
+              <span>TypeMatiere</span>
               <input class="form-control form-control-sm mb-4" [formControl]="libele" type="text" placeholder="Cycle" required>
+
+
               <input class="form-control form-control-sm mb-4" [formControl]="codeMat" type="text" placeholder="codeMat" required>
 
               <span>TypeMatiere</span>
