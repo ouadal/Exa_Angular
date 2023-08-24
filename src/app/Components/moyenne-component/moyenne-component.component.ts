@@ -218,6 +218,7 @@ export class MoyenneComponentComponent implements OnInit {
   host1 = environment.backendHost+"/api/v1/report/recapitulatif";
   host2 = environment.backendHost+"/api/v1/report/recapitulatif-Ecole";
   host3 = environment.backendHost+"/api/v1/report/releve";
+  host4 = environment.backendHost+"/api/v1/report/listeEleveParSexe";
 
 
 
